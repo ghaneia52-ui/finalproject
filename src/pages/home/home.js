@@ -1,8 +1,6 @@
-import { El } from "../../utils/el.js";
-export  function HomePage() {
+export function Home() {
   return El({
-    element:"div",
-    className:"bg-amber-100",
-    innerText:"vhjbjkkl",
-  })
+    element: "div",
+    children: ["Home Page"],
+  });
 }
