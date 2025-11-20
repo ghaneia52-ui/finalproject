@@ -1,20 +1,51 @@
 import { El } from "../../utils/el.js";
+import { store } from "../../utils/store.js";
 import { Onboarding1 } from "../../component/onboarding/onboarding1.js";
 import { Onboarding2 } from "../../component/onboarding/onboarding2.js";
+import { Onboarding3 } from "../../component/onboarding/onboarding3.js";
+import { Onboarding4 } from "../../component/onboarding/onboarding4.js";
+import { Onboarding5 } from "../../component/onboarding/onboarding5.js";
 
 export function OnboardingPage() {
-  const container = El({
-    element: "div",
-  });
+  const container = El({ element: "div" });
 
-  // صفحه اول
-  container.appendChild(Onboarding1());
-
-  // بعد از ۵ ثانیه → صفحه دوم
-  setTimeout(() => {
+  function render(step) {
     container.innerHTML = "";
-    container.appendChild(Onboarding2());
-  }, 5000);
+
+    switch (step) {
+      case 1:
+        container.appendChild(Onboarding1());
+        break;
+
+      case 2:
+        container.appendChild(Onboarding2());
+        break;
+
+      case 3:
+        container.appendChild(Onboarding3());
+        break;
+
+      case 4:
+        container.appendChild(Onboarding4());
+        break;
+
+      case 5:
+        container.appendChild(Onboarding5());
+        break;
+
+      case 6:
+        container.innerHTML = "<h1>Finished!</h1>";
+        break;
+    }
+  }
+
+  store.subscribe("onboardingStep", render);
+
+  render(store.getState("onboardingStep"));
+
+  setTimeout(() => store.setState("onboardingStep", 2), 5000);
+  setTimeout(() => store.setState("onboardingStep", 3), 10000);
 
   return container;
 }
+

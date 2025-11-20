@@ -1,38 +1,34 @@
  function createStore() {
-	const state = {
-		isModalOpen: false,
-		isLoading: false,
-		sharedValue: "",
-	};
-	const listeners = {};
+  const state = {
+    isModalOpen: false,
+    isLoading: false,
+    sharedValue: "",
+    onboardingStep: 1, 
+  };
 
-	function setState(key, value) {
-		state[key] = value;
-		if (listeners[key]) {
-			listeners[key].forEach((callback) => callback(value));
-		}
-	}
+  const listeners = {};
 
-	function getState(key) {
-		return state[key];
-	}
+  function setState(key, value) {
+    state[key] = value;
+    if (listeners[key]) {
+      listeners[key].forEach((callback) => callback(value));
+    }
+  }
 
-	function subscribe(key, callback) {
-		if (!listeners[key]) {
-			listeners[key] = [];
-		}
-		listeners[key].push(callback);
+  function getState(key) {
+    return state[key];
+  }
 
-		return function unsubscribe() {
-			listeners[key] = listeners[key].filter((cb) => cb !== callback);
-		};
-	}
+  function subscribe(key, callback) {
+    if (!listeners[key]) listeners[key] = [];
+    listeners[key].push(callback);
 
-	return {
-		setState,
-		getState,
-		subscribe,
-	};
+    return () => {
+      listeners[key] = listeners[key].filter((cb) => cb !== callback);
+    };
+  }
+
+  return { setState, getState, subscribe };
 }
 
 export const store = createStore();

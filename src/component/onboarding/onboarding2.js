@@ -28,9 +28,10 @@ export function Onboarding2() {
       El({
         element: "img",
         src: "/src/asset/images/The best sneakers & shoes e-commerse app of the century for your fashion needs! (1).svg",
-        className:"absolute top-190 left-14 w-330 text-center",
+        className: "absolute top-190 left-14 w-330 text-center",
       }),
     ],
   });
 }
+
 
