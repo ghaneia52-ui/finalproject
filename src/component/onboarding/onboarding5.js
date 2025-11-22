@@ -21,7 +21,7 @@ export function Onboarding5() {
       }),
       El({
         element: "button",
-        innerText: "Next",
+        innerText: "Get started",
         className: "absolute w-90 h-10 mt-13 ml-7 bg-black text-white rounded-xl",
         onclick: () => store.setState("onboardingStep", 6),
       }),

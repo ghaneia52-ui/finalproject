@@ -5,6 +5,7 @@ import { Onboarding2 } from "../../component/onboarding/onboarding2.js";
 import { Onboarding3 } from "../../component/onboarding/onboarding3.js";
 import { Onboarding4 } from "../../component/onboarding/onboarding4.js";
 import { Onboarding5 } from "../../component/onboarding/onboarding5.js";
+import { SignUp } from "../../component/login/sign-up.js";
 
 export function OnboardingPage() {
   const container = El({ element: "div" });
@@ -34,7 +35,7 @@ export function OnboardingPage() {
         break;
 
       case 6:
-        container.innerHTML = "<h1>Finished!</h1>";
+        container.appendChild(SignUp());
         break;
     }
   }
@@ -43,8 +44,8 @@ export function OnboardingPage() {
 
   render(store.getState("onboardingStep"));
 
-  setTimeout(() => store.setState("onboardingStep", 2), 5000);
-  setTimeout(() => store.setState("onboardingStep", 3), 10000);
+  setTimeout(() => store.setState("onboardingStep", 2), 2000);
+  setTimeout(() => store.setState("onboardingStep", 3), 4000);
 
   return container;
 }
