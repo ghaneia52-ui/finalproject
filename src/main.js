@@ -1,47 +1,31 @@
- import { CartPage } from "./pages/cart/cart";
-import { CheckoutPage } from "./pages/checkout/checkout";
-// import { HomePage } from "/src/pages/home/home.js";
-import { LoginPage } from "./pages/login/login";
+import { CartPage } from "./pages/cart/cart.js";
+import { CheckoutPage } from "./pages/checkout/checkout.js";
+// import { HomePage } from "./pages/home/home.js";
+import { LoginFormPage } from "./pages/login/loginform.js";
 import { OnboardingPage } from "./pages/onboarding/onboarding.js";
-import { SearchPage } from "./pages/search/search";
-import { SingleProductPage } from "./pages/single-product/single-product";
+import { SearchPage } from "./pages/search/search.js";
+import { SingleProductPage } from "./pages/single-product/single-product.js";
 
 import "./style.css";
 
-import { router } from "./utils/router";
+import { router } from "./utils/router.js";
+
+// ساخت صفحه
 const app = document.getElementById("app");
 const pageContainer = document.createElement("div");
 app.appendChild(pageContainer);
 
+//
+// ----------- ROUTES ------------
+//
+
 // router.addRoute("/", HomePage);
-// router.addRoute("/cart", CartPage); 
-// router.addRoute("/checkout", CheckoutPage);
-router.addRoute("/login", LoginPage);
- router.addRoute("/onboarding", OnboardingPage);
-// router.addRoute("/search", SearchPage);
-// router.addRoute("/single-product", SingleProductPage);
-//  router.init(pageContainer);
-// router.addRoute("/cart", CartPage);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// router.addRoute("/checkout", CheckoutPage);
-// router.addRoute("/login", LoginPage);
+router.addRoute("/login", LoginFormPage);
 router.addRoute("/onboarding", OnboardingPage);
+// router.addRoute("/cart", CartPage);
+// router.addRoute("/checkout", CheckoutPage);
 // router.addRoute("/search", SearchPage);
-// router.addRoute("/single-product", SingleProductPage);
+// router.addRoute("/product", SingleProductPage);
 
-
+// اجرای روتر
 router.init(pageContainer);
