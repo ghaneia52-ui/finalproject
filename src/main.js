@@ -1,6 +1,6 @@
 import { CartPage } from "./pages/cart/cart.js";
 import { CheckoutPage } from "./pages/checkout/checkout.js";
-// import { HomePage } from "./pages/home/home.js";
+import { HomePage } from "./pages/home/home.js";
 import { LoginFormPage } from "./pages/login/loginform.js";
 import { OnboardingPage } from "./pages/onboarding/onboarding.js";
 import { SearchPage } from "./pages/search/search.js";
@@ -15,17 +15,15 @@ const app = document.getElementById("app");
 const pageContainer = document.createElement("div");
 app.appendChild(pageContainer);
 
-//
 // ----------- ROUTES ------------
-//
-
-// router.addRoute("/", HomePage);
+router.addRoute("/", HomePage);
 router.addRoute("/login", LoginFormPage);
 router.addRoute("/onboarding", OnboardingPage);
-// router.addRoute("/cart", CartPage);
-// router.addRoute("/checkout", CheckoutPage);
-// router.addRoute("/search", SearchPage);
-// router.addRoute("/product", SingleProductPage);
+router.addRoute("/cart", CartPage);
+router.addRoute("/checkout", CheckoutPage);
+router.addRoute("/search", SearchPage);
+router.addRoute("/product", SingleProductPage);
 
 // اجرای روتر
 router.init(pageContainer);
+
