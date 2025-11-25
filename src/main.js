@@ -1,4 +1,5 @@
 
+import { allSneakers } from "./api/itemsSneakers.js";
 import { SignUp } from "./component/login/sign-up.js";
 import { CartPage } from "./pages/cart/cart.js";
 import { CheckoutPage } from "./pages/checkout/checkout.js";
@@ -30,6 +31,7 @@ router.addRoute("/signup",SignUp)
 
 // اجرای روتر
 router.init(pageContainer);
+
 
 
 
