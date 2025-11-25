@@ -38,7 +38,7 @@ export async function SignUpUser() {
 
       return data;
     } else {
-      // اگر داده‌ای برای message وجود داشت، نمایش بده
+  
       const message = Array.isArray(data?.message)
         ? data.message[0]
         : data?.message ?? 'خطای ناشناخته در ثبت نام';

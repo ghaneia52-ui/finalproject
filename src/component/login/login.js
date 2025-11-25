@@ -1,3 +1,4 @@
+// src/component/login/Login.js
 import { El } from '../../utils/el.js';
 import { router } from '../../utils/router.js';
 
@@ -8,7 +9,7 @@ export function Login() {
     pwd.type = pwd.type === "password" ? "text" : "password";
   }
 
-  function LoginUser() {
+  async function LoginUser() {
     const username = document.getElementById("username").value.trim();
     const password = document.getElementById("password").value.trim();
     const msg = document.getElementById("log-message");
@@ -19,27 +20,35 @@ export function Login() {
       return;
     }
 
-    const savedUser = JSON.parse(localStorage.getItem("user"));
+    try {
+      const response = await fetch("http://localhost:3000/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
 
-    if (!savedUser) {
-      msg.innerText = "هنوز ثبت‌نام نکرده‌اید!";
+      const data = await response.json();
+
+      if (response.ok) {
+        // ذخیره توکن و نام کاربری در localStorage
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("username", data.user?.username ?? username);
+
+        msg.innerText = "✔️ ورود موفقیت‌آمیز!";
+        msg.classList.remove("text-red-600");
+        msg.classList.add("text-green-600");
+
+        // بعد از ورود موفق، به صفحه اصلی هدایت می‌شود
+        setTimeout(() => router.navigate("/"), 1500);
+      } else {
+        msg.innerText = data.message || "نام کاربری یا رمز اشتباه است";
+        msg.classList.add("text-red-600");
+      }
+    } catch (error) {
+      console.error(error);
+      msg.innerText = "خطا در ارتباط با سرور";
       msg.classList.add("text-red-600");
-      return;
     }
-
-    if (savedUser.username !== username || savedUser.password !== password) {
-      msg.innerText = "نام کاربری یا رمز اشتباه است!";
-      msg.classList.add("text-red-600");
-      return;
-    }
-
-    msg.innerText = "✔️ ورود موفقیت‌آمیز!";
-    msg.classList.remove("text-red-600");
-    msg.classList.add("text-green-600");
-
-    setTimeout(() => {
-      router.navigate("/"); // ← اینجا صفحه Home شماست
-    }, 1500);
   }
 
   return El({
@@ -62,13 +71,7 @@ export function Login() {
             className: "flex w-full relative mt-10",
             children: [
               El({ element: "img", src: "src/asset/images/input-prefix (3).svg", className: "absolute top-3 left-2" }),
-              El({
-                element: "input",
-                id: "username",
-                type: "text",
-                placeholder: "username",
-                className: "w-full px-8 py-2"
-              })
+              El({ element: "input", id: "username", type: "text", placeholder: "username", className: "w-full px-8 py-2" })
             ]
           }),
 
@@ -78,13 +81,7 @@ export function Login() {
             className: "w-full relative",
             children: [
               El({ element: "img", src: "src/asset/images/lock-fill.svg", className: "absolute top-3 left-2 z-10" }),
-              El({
-                element: "input",
-                id: "password",
-                type: "password",
-                placeholder: "password",
-                className: "w-full px-8 py-2"
-              }),
+              El({ element: "input", id: "password", type: "password", placeholder: "password", className: "w-full px-8 py-2" }),
 
               El({
                 element: "img",
@@ -93,12 +90,9 @@ export function Login() {
                 eventListener: [{ event: "click", callback: togglePassword }]
               }),
 
-              El({
-                element: "span",
-                id: "log-message",
-                className: "text-red-600 text-sm mt-1 block"
-              }),
+              El({ element: "span", id: "log-message", className: "text-red-600 text-sm mt-1 block" }),
 
+              // Button
               El({
                 element: "button",
                 innerText: "Login",
@@ -112,3 +106,4 @@ export function Login() {
     ]
   });
 }
+

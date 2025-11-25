@@ -1,3 +1,5 @@
+
+import { SignUp } from "./component/login/sign-up.js";
 import { CartPage } from "./pages/cart/cart.js";
 import { CheckoutPage } from "./pages/checkout/checkout.js";
 import { HomePage } from "./pages/home/home.js";
@@ -23,7 +25,11 @@ router.addRoute("/cart", CartPage);
 router.addRoute("/checkout", CheckoutPage);
 router.addRoute("/search", SearchPage);
 router.addRoute("/product", SingleProductPage);
+router.addRoute("/signup",SignUp)
+
 
 // اجرای روتر
 router.init(pageContainer);
+
+
 

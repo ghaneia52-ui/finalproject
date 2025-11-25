@@ -2,10 +2,10 @@ import { BASE_URL } from "../constants/index.js";
 
 export async function ItemSneakers() {
     try {
-        const res = await fetch(`${BASE_URL}/sneaker?page=1&limit=100`, {
+        const res = await fetch(`${BASE_URL}/sneaker?page=1&limit=43`, {
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": "bafb0f72-6f14-4395-b755-4d621030e552"
+                "Authorization": "4adfc1dd-1a23-4abb-ac32-692cb800f66e"
             }
         });
 

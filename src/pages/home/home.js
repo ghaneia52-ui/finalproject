@@ -10,8 +10,9 @@ export async function HomePage() {
         element: "div",
         children: [
             HomeComponent(),
-            HomeComponent2(products)
+            HomeComponent2(products) // کانتینر لیست محصولات
         ]
     });
 }
+
 
