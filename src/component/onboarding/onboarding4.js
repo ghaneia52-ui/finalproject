@@ -16,7 +16,7 @@ export function Onboarding4() {
       }),
       El({
         element: "img",
-        src: "./src/asset/images/_carousel-indicators (1).svg",
+        src: "./src/asset/images/_carousel-indicators (3).svg",
         className: "w-380p ml-37 mt-20",
       }),
       El({

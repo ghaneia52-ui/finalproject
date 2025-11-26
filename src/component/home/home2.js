@@ -1,11 +1,11 @@
 import { El } from "/src/utils/el.js";
-
+import { router } from "/src/utils/router.js";   // ← این را اضافه کن
 
 export function HomeComponent2(products = []) {
 
     const container = El({
         element: "div",
-        className: "px-5 mt-6"
+        className: "px-5 mt-6 overflow-scroll"
     });
 
     function renderList(list) {
@@ -14,39 +14,46 @@ export function HomeComponent2(products = []) {
         return El({
             element: "div",
             className: "grid grid-cols-2 gap-4",
+
             children: list.map(item =>
                 El({
                     element: "div",
-                    className: " rounded-xl p-3 shadow hover:shadow-lg ",
-                    
-                    onclick: () => {},
+                    className: "rounded-xl p-3 shadow hover:shadow-lg cursor-pointer",
+
+                    onclick: () => {
+                        router.navigate(`/product?id=${item.id}`);
+                    },
+
                     children: [
                         El({
                             element: "img",
                             src: item.imageURL || item.image || "/src/asset/images/placeholder.png",
                             className: "w-full h-32 object-cover rounded-md"
                         }),
+
                         El({
                             element: "h2",
                             innerText: item.name || "No Name",
                             className: "font-semibold mt-2 text-sm"
                         }),
-                       
+
                         El({
                             element: "p",
                             innerText: `$${item.price ?? "-"}`,
                             className: "text-gray-600 text-sm mt-1"
-                        })
+                        }),
                     ]
                 })
             )
         });
     }
-
-    container.appendChild(renderList(products));
+   container.appendChild(renderList(products));
 
     return container;
 }
+ 
+
+
 
 
 

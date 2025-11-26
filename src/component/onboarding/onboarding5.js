@@ -11,12 +11,12 @@ export function Onboarding5() {
       }),
       El({
         element: "img",
-        src: "./src/asset/images/Let’s fulfill your fashion needs with shoearight now!.svg",
+        src: "./src/asset/images/Let’s fulfill your fashion needs with shoearight now! (1).svg",
         className: "w-380p ml-7 mt-8",
       }),
       El({
         element: "img",
-        src: "./src/asset/images/_carousel-indicators (2).svg",
+        src: "./src/asset/images/_carousel-indicators (4).svg",
         className: "w-380p ml-37 mt-17",
       }),
       El({

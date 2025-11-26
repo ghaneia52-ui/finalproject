@@ -12,7 +12,7 @@ export async function HomePage() {
         children: [
             HomeComponent(),
             HomeComponent2(products), // کانتینر لیست محصولات
-            Footer() // اضافه کردن فوتر در صورت نیاز
+            Footer() 
         ]
     });
 }

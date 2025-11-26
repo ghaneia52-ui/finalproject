@@ -60,10 +60,6 @@ export async function allSneakers() {
 
         const data = await res.json();
 
-        if (!Array.isArray(data.data)) {
-            console.error("API ERROR RESPONSE:", data);
-            return [];
-        }
 
         return data.data;
 

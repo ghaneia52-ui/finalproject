@@ -6,10 +6,9 @@ export function HomeComponent() {
 
     let username = localStorage.getItem('username') || "Guest";
 
-    // محل نمایش محصولات
+
     const productBox = El({ element: "div", className: "" });
 
-    // بارگذاری اولیه
     loadProducts("All");
 
     async function loadProducts(brand) {
@@ -20,30 +19,44 @@ export function HomeComponent() {
 
     return El({
         element: "div",
-        className: "w-full max-w-7xl mx-auto px-5", // container مرکزی
+        className: "w-full max-w-7xl mx-auto px-5",
         children: [
 
-            // HEADER
+            
             El({
                 element: "div",
                 className: "flex justify-between items-center mt-5",
                 children: [
-                    // سمت چپ: متن‌ها
+                    
                     El({
                         element: "div",
                         className: "flex flex-col",
                         children: [
-                            El({ element: "h1", innerText: "Good Morning 👋", className: "text-left font-semibold text-xl" }),
-                            El({ element: "h1", innerText: username, className: "text-left font-semibold text-xl" })
+                            El({ 
+                                element: "h1",
+                                 innerText: "Good Morning 👋",
+                                  className: "text-left font-semibold text-xl"
+                                 }),
+                            El({ 
+                                element: "h1",
+                                 innerText: username,
+                                  className: "text-left font-semibold text-xl" })
                         ]
                     }),
-                    // سمت راست: آیکون‌ها
+                    
                     El({
                         element: "div",
                         className: "flex gap-4",
                         children: [
-                            El({ element: "img", src: "src/asset/images/Vector (2).svg", className: "" }),
-                            El({ element: "img", src: "/src/asset/images/heart.svg", className: "" })
+                            El({ 
+                                element: "img",
+                                 src: "src/asset/images/Vector (2).svg",
+                                  className: "" 
+                                }),
+                            El({
+                                 element: "img",
+                                 src: "/src/asset/images/heart.svg",
+                                  className: "" })
                         ]
                     })
                 ]
